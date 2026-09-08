@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{9183D10EC0022C89}worlds/VehicleBounds/ME_VBT_VehicleBoundsFixture.ent"
+ Configurations {
+  ENTResourceClass PC {
+  }
+  ENTResourceClass XBOX_ONE : PC {
+  }
+  ENTResourceClass XBOX_SERIES : PC {
+  }
+  ENTResourceClass PS4 : PC {
+  }
+  ENTResourceClass PS5 : PC {
+  }
+  ENTResourceClass HEADLESS : PC {
+  }
+ }
+}

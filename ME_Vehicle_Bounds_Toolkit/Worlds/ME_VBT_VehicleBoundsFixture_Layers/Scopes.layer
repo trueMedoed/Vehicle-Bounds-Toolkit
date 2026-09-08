@@ -1,0 +1,32 @@
+GenericEntity VehicleBoundsScope_US {
+ components {
+  ME_VBT_VehicleBoundsFactionScopeComponent "{7B7E1A81A1C10001}" {
+   m_sFactionKey "US"
+  }
+ }
+ coords 0 1 5
+}
+GenericEntity VehicleBoundsScope_USSR {
+ components {
+  ME_VBT_VehicleBoundsFactionScopeComponent "{7B7E1A81A1C10002}" {
+   m_sFactionKey "USSR"
+  }
+ }
+ coords 1 1 5
+}
+GenericEntity VehicleBoundsScope_CIV {
+ components {
+  ME_VBT_VehicleBoundsFactionScopeComponent "{7B7E1A81A1C10003}" {
+   m_sFactionKey "CIV"
+  }
+ }
+ coords 2 1 5
+}
+GenericEntity VehicleBoundsScope_FIA {
+ components {
+  ME_VBT_VehicleBoundsFactionScopeComponent "{7B7E1A81A1C10004}" {
+   m_sFactionKey "FIA"
+  }
+ }
+ coords 3 1 5
+}

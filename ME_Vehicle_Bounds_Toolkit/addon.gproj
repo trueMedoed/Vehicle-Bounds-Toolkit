@@ -1,0 +1,11 @@
+GameProject {
+ ID "MEVehicleBoundsToolkit"
+ GUID "AEEBCCA53D2E81BA"
+ TITLE "ME Vehicle Bounds Toolkit"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+ Configurations {
+  GameProjectConfig PC {}
+ }
+}

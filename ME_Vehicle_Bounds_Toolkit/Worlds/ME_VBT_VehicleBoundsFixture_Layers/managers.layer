@@ -1,0 +1,7 @@
+SCR_BaseGameMode GameMode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
+ coords 0 1 0
+ m_eTestGameFlags SpawnVehicles
+}
+SCR_FactionManager FactionManager : "{4A188E44289B9A50}Prefabs/MP/Managers/Factions/FactionManager_Editor.et" {
+ coords 1 1 0
+}
