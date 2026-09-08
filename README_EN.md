@@ -1,13 +1,15 @@
 # ME Vehicle Bounds Toolkit
 
-Standalone Arma Reforger Workbench tooling for measuring per-prefab vehicle bounds and detecting changes between game builds.
+Standalone Arma Reforger Workbench tooling for generating per-prefab vehicle bounding boxes and detecting changes between game builds.
 
 ## Purpose
+
+The toolkit measures an **axis-aligned bounding box (AABB)** for every supported vehicle prefab. Each bounding box is represented by its minimum and maximum corners relative to the vehicle root. In project names such as `VehicleBounds`, the word `bounds` refers specifically to this bounding box.
 
 The toolkit answers two questions:
 
 1. Does the reference scene cover every enabled vehicle prefab from the supported faction catalogs?
-2. Did the bounds of any covered vehicle change after a game update or scene change?
+2. Did the bounding box of any covered vehicle change after a game update or scene change?
 
 The project uses the term `fixture` in code, resource names, and diagnostics. In this documentation, **reference scene** means the same thing: a controlled World Editor scene containing one marked root for every vehicle being measured.
 
@@ -37,7 +39,7 @@ Each snapshot stores:
 
 - schema, generator, reference-scene, and game-build versions;
 - the canonical prefab resource path;
-- local minimum and maximum bounds;
+- local AABB minimum and maximum corners;
 - sorted faction keys;
 - sorted vehicle-type labels.
 

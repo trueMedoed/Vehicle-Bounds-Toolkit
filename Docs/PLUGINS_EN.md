@@ -72,8 +72,8 @@ Runs the complete measurement and comparison pipeline:
 1. collects and validates the marked roots and faction scopes;
 2. resolves all enabled entries from the faction-specific vehicle catalogs;
 3. verifies exact catalog coverage;
-4. measures each root and all of its children with `SCR_Global.GetWorldBoundsWithChildren`;
-5. converts world bounds to coordinates relative to the unrotated root;
+4. generates a world-space axis-aligned bounding box (AABB) for each root and all of its children with `SCR_Global.GetWorldBoundsWithChildren`;
+5. converts the AABB minimum and maximum corners to coordinates relative to the unrotated root;
 6. records sorted faction and vehicle-type memberships;
 7. validates and saves the Candidate;
 8. rebuilds and reloads the Candidate resource;
