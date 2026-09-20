@@ -30,14 +30,14 @@ class ME_VBT_GenerateVehicleBoundsSnapshotPlugin : WorldEditorPlugin
 			gameVersion = game.GetBuildVersion();
 		if (gameVersion.IsEmpty())
 		{
-			Print("[ME_VBT_WB] snapshot_compare status=FAIL reason=game_version_unavailable");
+			Print("[ME_VBT_WB] snapshot_compare status=FAIL reason=game_version_unavailable", LogLevel.ERROR);
 			return;
 		}
 
 		WorldEditor worldEditor = Workbench.GetModule(WorldEditor);
 		if (!worldEditor)
 		{
-			Print("[ME_VBT_WB] snapshot_compare status=FAIL reason=world_editor_unavailable");
+			Print("[ME_VBT_WB] snapshot_compare status=FAIL reason=world_editor_unavailable", LogLevel.ERROR);
 			return;
 		}
 
@@ -45,20 +45,20 @@ class ME_VBT_GenerateVehicleBoundsSnapshotPlugin : WorldEditorPlugin
 		string reason;
 		if (!ME_VBT_VehicleBoundsFixtureInventory.Collect(worldEditor.GetApi(), inventory, reason))
 		{
-			PrintFormat("[ME_VBT_WB] snapshot_compare status=FAIL reason=%1", reason);
+			Print(string.Format("[ME_VBT_WB] snapshot_compare status=FAIL reason=%1", reason), LogLevel.ERROR);
 			return;
 		}
 
 		array<ref ME_VBT_VehicleBoundsCatalogRecord> catalogRecords;
 		if (!ME_VBT_VehicleBoundsCatalogResolver.Resolve(inventory, catalogRecords, reason))
 		{
-			PrintFormat("[ME_VBT_WB] snapshot_compare status=FAIL reason=%1", reason);
+			Print(string.Format("[ME_VBT_WB] snapshot_compare status=FAIL reason=%1", reason), LogLevel.ERROR);
 			return;
 		}
 
 		if (!ME_VBT_VehicleBoundsCatalogResolver.ValidateCoverage(inventory, catalogRecords, reason))
 		{
-			PrintFormat("[ME_VBT_WB] snapshot_compare status=FAIL reason=%1", reason);
+			Print(string.Format("[ME_VBT_WB] snapshot_compare status=FAIL reason=%1", reason), LogLevel.ERROR);
 			return;
 		}
 
@@ -81,7 +81,7 @@ class ME_VBT_GenerateVehicleBoundsSnapshotPlugin : WorldEditorPlugin
 			vector localMaxs = worldMaxs - marker.m_Entity.GetOrigin();
 			if (!AreFiniteOrderedBounds(localMins, localMaxs))
 			{
-				PrintFormat("[ME_VBT_WB] snapshot_compare status=FAIL reason=invalid_local_bounds path=%1", catalogRecord.m_sPrefab);
+				Print(string.Format("[ME_VBT_WB] snapshot_compare status=FAIL reason=invalid_local_bounds path=%1", catalogRecord.m_sPrefab), LogLevel.ERROR);
 				return;
 			}
 			AddMeasuredEntry(candidate, catalogRecord, localMins, localMaxs);
@@ -90,14 +90,14 @@ class ME_VBT_GenerateVehicleBoundsSnapshotPlugin : WorldEditorPlugin
 		SortSnapshot(candidate);
 		if (!ValidateSnapshot(candidate, reason))
 		{
-			PrintFormat("[ME_VBT_WB] snapshot_compare status=FAIL reason=%1", reason);
+			Print(string.Format("[ME_VBT_WB] snapshot_compare status=FAIL reason=%1", reason), LogLevel.ERROR);
 			return;
 		}
 
 		ME_VBT_VehicleBoundsPerPrefabSnapshot reloadedCandidate;
 		if (!SaveAndReloadCandidate(candidate, reloadedCandidate, reason))
 		{
-			PrintFormat("[ME_VBT_WB] snapshot_compare status=FAIL reason=%1 candidate=%2", reason, CANDIDATE_PATH);
+			Print(string.Format("[ME_VBT_WB] snapshot_compare status=FAIL reason=%1 candidate=%2", reason, CANDIDATE_PATH), LogLevel.ERROR);
 			return;
 		}
 
@@ -105,7 +105,7 @@ class ME_VBT_GenerateVehicleBoundsSnapshotPlugin : WorldEditorPlugin
 		ME_VBT_VehicleBoundsPerPrefabSnapshot baseline;
 		if (!LoadBaseline(baseline, reason))
 		{
-			PrintFormat("[ME_VBT_WB] snapshot_compare status=FAIL reason=baseline_%1 candidate_written=1", reason);
+			Print(string.Format("[ME_VBT_WB] snapshot_compare status=FAIL reason=baseline_%1 candidate_written=1", reason), LogLevel.ERROR);
 			return;
 		}
 

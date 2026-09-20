@@ -12,7 +12,7 @@ class ME_VBT_VehicleBoundsFixtureCoveragePlugin : WorldEditorPlugin
 		WorldEditor worldEditor = Workbench.GetModule(WorldEditor);
 		if (!worldEditor)
 		{
-			Print("[ME_VBT_WB] fixture_coverage status=FAIL reason=world_editor_unavailable");
+			Print("[ME_VBT_WB] fixture_coverage status=FAIL reason=world_editor_unavailable", LogLevel.ERROR);
 			return;
 		}
 
@@ -20,20 +20,20 @@ class ME_VBT_VehicleBoundsFixtureCoveragePlugin : WorldEditorPlugin
 		string reason;
 		if (!ME_VBT_VehicleBoundsFixtureInventory.Collect(worldEditor.GetApi(), inventory, reason))
 		{
-			PrintFormat("[ME_VBT_WB] fixture_coverage status=FAIL reason=%1", reason);
+			Print(string.Format("[ME_VBT_WB] fixture_coverage status=FAIL reason=%1", reason), LogLevel.ERROR);
 			return;
 		}
 
 		array<ref ME_VBT_VehicleBoundsCatalogRecord> catalogRecords;
 		if (!ME_VBT_VehicleBoundsCatalogResolver.Resolve(inventory, catalogRecords, reason))
 		{
-			PrintFormat("[ME_VBT_WB] fixture_coverage status=FAIL reason=%1", reason);
+			Print(string.Format("[ME_VBT_WB] fixture_coverage status=FAIL reason=%1", reason), LogLevel.ERROR);
 			return;
 		}
 
 		if (!ME_VBT_VehicleBoundsCatalogResolver.ValidateCoverage(inventory, catalogRecords, reason))
 		{
-			PrintFormat("[ME_VBT_WB] fixture_coverage status=FAIL reason=%1", reason);
+			Print(string.Format("[ME_VBT_WB] fixture_coverage status=FAIL reason=%1", reason), LogLevel.ERROR);
 			return;
 		}
 

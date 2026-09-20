@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__enfusion-mcp__api_search",
+      "mcp__enfusion-mcp__wiki_search",
+      "mcp__enfusion-mcp__asset_search",
+      "mcp__enfusion-mcp__game_read",
+      "mcp__enfusion-mcp__mod_validate",
+      "mcp__enfusion-mcp__wb_connect"
+    ]
+  }
+}
