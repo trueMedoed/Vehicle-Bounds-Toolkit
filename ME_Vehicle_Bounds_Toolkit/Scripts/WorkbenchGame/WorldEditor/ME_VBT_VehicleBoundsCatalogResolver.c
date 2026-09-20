@@ -1,12 +1,12 @@
 //! Resolves the enabled faction-specific VEHICLE catalogs declared by the open fixture.
 
 //------------------------------------------------------------------------------------------------
-//! One canonical prefab and all faction/type memberships found in the declared catalogs.
+//! One canonical prefab and its single faction/type membership.
 class ME_VBT_VehicleBoundsCatalogRecord
 {
 	ResourceName m_sPrefab;
-	ref array<string> m_aFactionKeys = {};
-	ref array<string> m_aVehicleTypes = {};
+	string m_sFactionKey;
+	string m_sVehicleType;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -82,41 +82,56 @@ class ME_VBT_VehicleBoundsCatalogResolver
 					return false;
 				}
 
-				ME_VBT_VehicleBoundsCatalogRecord record = FindRecord(records, prefab);
-				if (!record)
-				{
-					record = new ME_VBT_VehicleBoundsCatalogRecord();
-					record.m_sPrefab = prefab;
-					records.Insert(record);
-				}
-
-				if (!record.m_aFactionKeys.Contains(scope.m_sFactionKey))
-					record.m_aFactionKeys.Insert(scope.m_sFactionKey);
-
 				array<EEditableEntityLabel> labels = {};
 				catalogEntry.GetEditableEntityLabels(labels);
+				array<string> vehicleTypes = {};
 				foreach (EEditableEntityLabel label : labels)
 				{
 					string labelName;
-					if (TryGetVehicleTypeName(label, labelName) && !record.m_aVehicleTypes.Contains(labelName))
-						record.m_aVehicleTypes.Insert(labelName);
+					if (TryGetVehicleTypeName(label, labelName) && !vehicleTypes.Contains(labelName))
+						vehicleTypes.Insert(labelName);
 				}
+				if (vehicleTypes.Count() != 1)
+				{
+					string typeNames;
+					foreach (string typeName : vehicleTypes)
+					{
+						if (!typeNames.IsEmpty())
+							typeNames += ",";
+						typeNames += typeName;
+					}
+					reason = string.Format("vehicle_type_membership_count_invalid path=%1 faction=%2 count=%3 types=%4", prefab, scope.m_sFactionKey, vehicleTypes.Count(), typeNames);
+					return false;
+				}
+				string vehicleType = vehicleTypes[0];
+
+				ME_VBT_VehicleBoundsCatalogRecord record = FindRecord(records, prefab);
+				if (record)
+				{
+					if (record.m_sFactionKey != scope.m_sFactionKey || record.m_sVehicleType != vehicleType)
+					{
+						reason = string.Format("duplicate_prefab_membership_conflict path=%1 existing_faction=%2 existing_type=%3 duplicate_faction=%4 duplicate_type=%5", prefab, record.m_sFactionKey, record.m_sVehicleType, scope.m_sFactionKey, vehicleType);
+						return false;
+					}
+					continue;
+				}
+
+				record = new ME_VBT_VehicleBoundsCatalogRecord();
+				record.m_sPrefab = prefab;
+				record.m_sFactionKey = scope.m_sFactionKey;
+				record.m_sVehicleType = vehicleType;
+				records.Insert(record);
 			}
+		}
+
+		if (records.IsEmpty())
+		{
+			reason = "catalog_records_empty";
+			return false;
 		}
 
 		SortRecords(records);
-		foreach (ME_VBT_VehicleBoundsCatalogRecord record : records)
-		{
-			record.m_aFactionKeys.Sort();
-			record.m_aVehicleTypes.Sort();
-			if (record.m_aVehicleTypes.IsEmpty())
-			{
-				reason = string.Format("vehicle_type_missing path=%1", record.m_sPrefab);
-				return false;
-			}
-		}
-
-		return !records.IsEmpty();
+		return true;
 	}
 
 	//------------------------------------------------------------------------------------------------

@@ -45,14 +45,16 @@ Plugins > ME Vehicle Bounds Toolkit
 
 ## `VBT: Validate fixture coverage`
 
-Сравнивает помеченные roots техники с детерминированным объединением включённых записей из объявленных faction-specific каталогов `VEHICLE`.
+Сравнивает помеченные roots техники с детерминированным объединением включённых записей из объявленных faction-specific каталогов `VEHICLE`. Повторное представление одного канонического prefab допустимо только для той же пары faction/basic type; другая принадлежность приводит к `FAIL`.
 
 Команда проверяет:
 
 - наличие всех обязательных faction scopes;
 - доступность faction manager, фракций и каталогов;
 - непустые включённые записи каталогов;
-- уникальность канонических путей prefab;
+- ровно одну поддерживаемую basic `VEHICLE_*` classification для каждого canonical prefab;
+- отсутствие конфликтов faction/type при повторном canonical prefab;
+- уникальность результирующих канонических путей prefab;
 - ожидаемое количество помеченных roots;
 - отсутствие поворота у измеряемых roots;
 - точное взаимно-однозначное соответствие между путями каталога и roots.
@@ -70,15 +72,16 @@ Global или factionless fallback для каталога не использу
 Выполняет полный процесс измерения и сравнения:
 
 1. собирает и проверяет помеченные roots и faction scopes;
-2. разрешает все включённые записи faction-specific каталогов техники;
+2. разрешает все включённые записи faction-specific каталогов техники и требует для каждого prefab одну faction и одну basic classification;
 3. проверяет точное покрытие каталогов;
 4. создаёт world-space осево-ориентированный bounding box (AABB) для каждого root и всех его дочерних сущностей через `SCR_Global.GetWorldBoundsWithChildren`;
 5. переводит минимальную и максимальную точки AABB в координаты относительно неповёрнутого root;
-6. записывает отсортированные принадлежности к фракциям и типам техники;
-7. проверяет и сохраняет Candidate;
-8. перестраивает и повторно загружает ресурс Candidate;
-9. проверяет соответствие загруженной модели созданной модели;
-10. сравнивает Candidate с принятым Baseline.
+6. строит grouped schema v2 `faction → vehicle type → prefab` и сортирует все три уровня;
+7. назначает identifier-safe имена контейнеров `<FactionKey>`, `<VehicleType>` и `<PrefabStem>` с проверкой collisions в каждом scope;
+8. проверяет metadata, допустимые basic types, bounds, глобальную уникальность prefab и точное количество `146`, затем сохраняет Candidate;
+9. перестраивает и cache-safe загружает ресурс Candidate через `BaseContainerTools.LoadContainer`;
+10. проверяет raw hierarchy, counts, порядок и имена всех трёх уровней, затем полное field-by-field соответствие загруженной typed-модели созданной модели;
+11. теми же raw и semantic проверками валидирует Baseline и сравнивает его с Candidate по canonical prefab path.
 
 Успешная генерация выводит:
 
@@ -94,7 +97,7 @@ Global или factionless fallback для каталога не использу
 [ME_VBT_WB] snapshot_compare status=FAIL reason=...
 ```
 
-Генератор записывает только Candidate. Принятие Baseline всегда выполняется вручную как отдельная операция.
+Генератор записывает только Candidate. Семантический diff разворачивает grouped hierarchy в детерминированный список по canonical prefab path и сообщает `ADDED`, `REMOVED` и `CHANGED`; смена parent faction или vehicle type считается membership change. Принятие Baseline всегда выполняется вручную как отдельная операция: копируйте только проверенный payload Candidate, сохраняя filename и отдельный `.meta` Baseline. Никогда не заменяйте его `.meta` файлом Candidate.
 
 ## Решение проблем
 

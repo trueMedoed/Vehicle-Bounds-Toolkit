@@ -30,10 +30,10 @@ class ME_VBT_VehicleBoundsFixtureInventoryResult
 //! Collects and validates the versioned public fixture contract.
 class ME_VBT_VehicleBoundsFixtureInventory
 {
-	static const int SCHEMA_VERSION = 1;
+	static const int SCHEMA_VERSION = 2;
 	static const int EXPECTED_MARKER_COUNT = 146;
 	static const string FIXTURE_IDENTITY = "ME_VBT_VehicleBoundsFixture_v1";
-	static const string GENERATOR_VERSION = "ME_VBT_per_prefab_generator_v1";
+	static const string GENERATOR_VERSION = "ME_VBT_per_prefab_generator_v2-faction-type-groups";
 
 	//------------------------------------------------------------------------------------------------
 	//! Returns the sorted faction keys required by this fixture version.

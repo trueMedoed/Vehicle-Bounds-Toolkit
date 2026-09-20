@@ -1,7 +1,7 @@
 //! Defines the standalone schema for deterministic per-prefab vehicle-bounds snapshots.
 
 //------------------------------------------------------------------------------------------------
-//! One canonical prefab with measured local bounds and all catalog memberships.
+//! One canonical prefab with measured local bounds.
 [BaseContainerProps(namingConvention: NamingConvention.NC_MUST_HAVE_NAME)]
 class ME_VBT_VehicleBoundsPerPrefabSnapshotEntry
 {
@@ -16,14 +16,34 @@ class ME_VBT_VehicleBoundsPerPrefabSnapshotEntry
 	//! Axis-aligned local maximum corner relative to the unrotated fixture root.
 	[Attribute("0 0 0")]
 	vector m_vLocalMaxs;
+}
 
-	//! Sorted faction keys whose enabled VEHICLE catalogs contain this prefab.
-	[Attribute()]
-	ref array<string> m_aFactionKeys;
+//------------------------------------------------------------------------------------------------
+//! One basic vehicle classification containing canonical prefab measurements.
+[BaseContainerProps(namingConvention: NamingConvention.NC_MUST_HAVE_NAME)]
+class ME_VBT_VehicleBoundsPerPrefabSnapshotVehicleType
+{
+	//! Supported basic VEHICLE_* classification.
+	[Attribute("")]
+	string m_sVehicleType;
 
-	//! Sorted vehicle-type labels found on this prefab across all declared catalogs.
+	//! Prefab entries sorted by canonical resource path.
 	[Attribute()]
-	ref array<string> m_aVehicleTypes;
+	ref array<ref ME_VBT_VehicleBoundsPerPrefabSnapshotEntry> m_aEntries;
+}
+
+//------------------------------------------------------------------------------------------------
+//! One faction containing its basic vehicle-type groups.
+[BaseContainerProps(namingConvention: NamingConvention.NC_MUST_HAVE_NAME)]
+class ME_VBT_VehicleBoundsPerPrefabSnapshotFaction
+{
+	//! Stable faction key.
+	[Attribute("")]
+	string m_sFactionKey;
+
+	//! Vehicle-type groups sorted by classification name.
+	[Attribute()]
+	ref array<ref ME_VBT_VehicleBoundsPerPrefabSnapshotVehicleType> m_aVehicleTypes;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -32,7 +52,7 @@ class ME_VBT_VehicleBoundsPerPrefabSnapshotEntry
 class ME_VBT_VehicleBoundsPerPrefabSnapshot
 {
 	//! Schema compatibility version.
-	[Attribute("1")]
+	[Attribute("2")]
 	int m_iSchemaVersion;
 
 	//! Generator implementation version that produced this payload.
@@ -47,7 +67,7 @@ class ME_VBT_VehicleBoundsPerPrefabSnapshot
 	[Attribute("")]
 	string m_sGameVersion;
 
-	//! Entries sorted by canonical prefab path.
+	//! Faction groups sorted by faction key.
 	[Attribute()]
-	ref array<ref ME_VBT_VehicleBoundsPerPrefabSnapshotEntry> m_aEntries;
+	ref array<ref ME_VBT_VehicleBoundsPerPrefabSnapshotFaction> m_aFactions;
 }

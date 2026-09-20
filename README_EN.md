@@ -13,7 +13,7 @@ The toolkit answers two questions:
 
 The project uses the term `fixture` in code, resource names, and diagnostics. In this documentation, **reference scene** means the same thing: a controlled World Editor scene containing one marked root for every vehicle being measured.
 
-The toolkit reads the faction-specific `VEHICLE` catalogs for `CIV`, `FIA`, `US`, and `USSR`. It validates the placed vehicle roots, measures every root together with its children, and stores deterministic local bounds with faction and vehicle-type information.
+The toolkit reads the faction-specific `VEHICLE` catalogs for `CIV`, `FIA`, `US`, and `USSR`. It validates the placed vehicle roots and the strict invariant that every canonical prefab belongs to exactly one faction and exactly one supported basic `VEHICLE_*` classification. It then measures every root together with its children and stores deterministic local bounds.
 
 This data can be used for editor previews, placement validation, spacing calculations, and regression checks.
 
@@ -35,15 +35,14 @@ For detailed command descriptions, see [Workbench plugins](Docs/PLUGINS_EN.md).
 
 ## Snapshots
 
-Each snapshot stores:
+Per-prefab snapshots use grouped schema v2 and store:
 
 - schema, generator, reference-scene, and game-build versions;
-- the canonical prefab resource path;
-- local AABB minimum and maximum corners;
-- sorted faction keys;
-- sorted vehicle-type labels.
+- sorted faction groups with one `m_sFactionKey` per group;
+- sorted basic vehicle-type groups with one `m_sVehicleType` per group;
+- the canonical prefab path and local AABB minimum and maximum corners in each leaf entry.
 
-Entries are sorted by canonical prefab path. Their serialized container names are derived from prefab filenames so that text diffs remain readable.
+The serialized hierarchy is `faction → vehicle type → prefab`. Faction groups are sorted by key, type groups by classification, and entries by canonical prefab path. Container names are `<FactionKey>`, `<VehicleType>`, and an identifier-safe terminal prefab stem, respectively. The generator validates names and collisions in every scope, global prefab uniqueness, and complete raw/typed equivalence after reloading the resource.
 
 ### Candidate
 

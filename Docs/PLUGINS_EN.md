@@ -45,14 +45,16 @@ The command makes no changes when validation fails or when every root already ha
 
 ## `VBT: Validate fixture coverage`
 
-Compares the marked vehicle roots with the deterministic union of enabled entries from the declared faction-specific `VEHICLE` catalogs.
+Compares the marked vehicle roots with the deterministic union of enabled entries from the declared faction-specific `VEHICLE` catalogs. A repeated representation of one canonical prefab is accepted only for the same faction/basic-type pair; conflicting membership produces `FAIL`.
 
 The command validates:
 
 - all required faction scopes;
 - availability of the faction manager, factions, and catalogs;
 - non-empty enabled catalog entries;
-- unique canonical prefab paths;
+- exactly one supported basic `VEHICLE_*` classification for every canonical prefab;
+- no faction/type conflicts when a canonical prefab is repeated;
+- unique resulting canonical prefab paths;
 - the expected number of marked roots;
 - unrotated measured roots;
 - exact one-to-one coverage between catalog paths and roots.
@@ -70,15 +72,16 @@ Expected result:
 Runs the complete measurement and comparison pipeline:
 
 1. collects and validates the marked roots and faction scopes;
-2. resolves all enabled entries from the faction-specific vehicle catalogs;
+2. resolves all enabled entries from the faction-specific vehicle catalogs and requires one faction and one basic classification per prefab;
 3. verifies exact catalog coverage;
 4. generates a world-space axis-aligned bounding box (AABB) for each root and all of its children with `SCR_Global.GetWorldBoundsWithChildren`;
 5. converts the AABB minimum and maximum corners to coordinates relative to the unrotated root;
-6. records sorted faction and vehicle-type memberships;
-7. validates and saves the Candidate;
-8. rebuilds and reloads the Candidate resource;
-9. verifies that the reloaded model matches the generated model;
-10. compares Candidate with the accepted Baseline.
+6. builds grouped schema v2 as `faction → vehicle type → prefab` and sorts all three levels;
+7. assigns identifier-safe `<FactionKey>`, `<VehicleType>`, and `<PrefabStem>` container names with collision checks in every scope;
+8. validates metadata, supported basic types, bounds, global prefab uniqueness, and the exact count of `146`, then saves the Candidate;
+9. rebuilds and cache-safely reloads the Candidate with `BaseContainerTools.LoadContainer`;
+10. validates the raw hierarchy, counts, ordering, and names at all three levels, then checks complete field-by-field equality between the generated and reloaded typed models;
+11. validates the Baseline with the same raw and semantic checks and compares it with the Candidate by canonical prefab path.
 
 Successful generation produces:
 
@@ -94,7 +97,7 @@ The comparison then produces one of:
 [ME_VBT_WB] snapshot_compare status=FAIL reason=...
 ```
 
-The generator writes only the Candidate. Baseline acceptance is always a separate manual operation.
+The generator writes only the Candidate. The semantic diff flattens the grouped hierarchy into a deterministic canonical-prefab list and reports `ADDED`, `REMOVED`, and `CHANGED`; moving a prefab to another parent faction or vehicle type is a membership change. Baseline acceptance is always a separate manual operation: copy only the reviewed Candidate payload while preserving the Baseline filename and its separate `.meta`. Never replace it with the Candidate `.meta`.
 
 ## Troubleshooting
 
