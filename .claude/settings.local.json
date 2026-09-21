@@ -20,7 +20,10 @@
       "mcp__enfusion-mcp__wb_stop",
       "Bash(powershell.exe -NoProfile -Command 'Get-Process -Name \"ArmaReforgerWorkbench*\" -ErrorAction SilentlyContinue | Select-Object Id,ProcessName,Path')",
       "Bash(powershell.exe -NoProfile -Command 'Get-ChildItem \"C:\\\\Users\\\\Phil\\\\Documents\\\\My Games\\\\ArmaReforgerWorkbench\\\\logs\" -Directory | Sort-Object LastWriteTime -Descending | Select-Object -First 1 FullName')",
-      "mcp__enfusion-mcp__game_browse"
+      "mcp__enfusion-mcp__game_browse",
+      "Bash(powershell.exe -NoProfile -Command \"Get-Process ArmaReforgerWorkbenchSteamDiag -ErrorAction SilentlyContinue | Select-Object Id,Path,StartTime | Format-List\")",
+      "Bash(powershell.exe -NoProfile -Command \"Get-Process ArmaReforgerWorkbenchSteamDiag -ErrorAction SilentlyContinue | Select-Object Id,Path,StartTime,MainWindowTitle | Format-List\")",
+      "mcp__enfusion-mcp__project_browse"
     ]
   }
 }
