@@ -6,7 +6,21 @@
       "mcp__enfusion-mcp__asset_search",
       "mcp__enfusion-mcp__game_read",
       "mcp__enfusion-mcp__mod_validate",
-      "mcp__enfusion-mcp__wb_connect"
+      "mcp__enfusion-mcp__wb_connect",
+      "Bash(powershell.exe -NoProfile -Command \"Get-Process -Name 'ArmaReforgerWorkbench*','ArmaReforger*' -ErrorAction SilentlyContinue | Select-Object ProcessName,Id,Path,StartTime | Format-Table -AutoSize\")",
+      "Bash(git:*)",
+      "Bash(cd:*)",
+      "Bash(node:*)",
+      "mcp__enfusion-mcp__wb_launch",
+      "mcp__enfusion-mcp__wb_state",
+      "mcp__enfusion-mcp__wb_open_resource",
+      "mcp__enfusion-mcp__wb_execute_action",
+      "mcp__enfusion-mcp__wb_cleanup",
+      "mcp__enfusion-mcp__wb_reload",
+      "mcp__enfusion-mcp__wb_stop",
+      "Bash(powershell.exe -NoProfile -Command 'Get-Process -Name \"ArmaReforgerWorkbench*\" -ErrorAction SilentlyContinue | Select-Object Id,ProcessName,Path')",
+      "Bash(powershell.exe -NoProfile -Command 'Get-ChildItem \"C:\\\\Users\\\\Phil\\\\Documents\\\\My Games\\\\ArmaReforgerWorkbench\\\\logs\" -Directory | Sort-Object LastWriteTime -Descending | Select-Object -First 1 FullName')",
+      "mcp__enfusion-mcp__game_browse"
     ]
   }
 }

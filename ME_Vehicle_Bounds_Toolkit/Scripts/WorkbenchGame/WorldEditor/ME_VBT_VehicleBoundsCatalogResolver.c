@@ -144,6 +144,14 @@ class ME_VBT_VehicleBoundsCatalogResolver
 	static bool ValidateCoverage(ME_VBT_VehicleBoundsFixtureInventoryResult inventory, array<ref ME_VBT_VehicleBoundsCatalogRecord> records, out string reason)
 	{
 		reason = "";
+		foreach (ME_VBT_VehicleBoundsCatalogRecord record : records)
+		{
+			if (ME_VBT_VehicleBoundsFixtureInventory.FindMarker(inventory.m_aMarkers, record.m_sPrefab))
+				continue;
+
+			PrintFormat("[ME_VBT_WB] fixture_coverage_diff kind=ADDED prefab=%1 faction=%2 vehicle_type=%3", record.m_sPrefab, record.m_sFactionKey, record.m_sVehicleType);
+		}
+
 		if (records.Count() != inventory.m_aMarkers.Count())
 		{
 			reason = string.Format("coverage_count_mismatch catalog=%1 markers=%2", records.Count(), inventory.m_aMarkers.Count());
