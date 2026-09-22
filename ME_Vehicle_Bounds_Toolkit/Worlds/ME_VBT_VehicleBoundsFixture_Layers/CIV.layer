@@ -1598,7 +1598,7 @@ Vehicle V2101_yellow : "{02582024FDD52845}Prefabs/Vehicles/Wheeled/V2101/V2101_y
    m_sCatalogPrefab "{02582024FDD52845}Prefabs/Vehicles/Wheeled/V2101/V2101_yellow.et"
   }
  }
- coords 150 1 175
+ coords 245 1 5
 }
 Vehicle V2101_red : "{1689340AD95AE7F4}Prefabs/Vehicles/Wheeled/V2101/V2101_red.et" {
  components {
@@ -1606,7 +1606,7 @@ Vehicle V2101_red : "{1689340AD95AE7F4}Prefabs/Vehicles/Wheeled/V2101/V2101_red.
    m_sCatalogPrefab "{1689340AD95AE7F4}Prefabs/Vehicles/Wheeled/V2101/V2101_red.et"
   }
  }
- coords 160.5 1 175
+ coords 245 1 12
 }
 Vehicle V2101_darkBlue : "{1846AF973412368A}Prefabs/Vehicles/Wheeled/V2101/V2101_darkBlue.et" {
  components {
@@ -1614,7 +1614,7 @@ Vehicle V2101_darkBlue : "{1846AF973412368A}Prefabs/Vehicles/Wheeled/V2101/V2101
    m_sCatalogPrefab "{1846AF973412368A}Prefabs/Vehicles/Wheeled/V2101/V2101_darkBlue.et"
   }
  }
- coords 171 1 175
+ coords 245 1 19
 }
 Vehicle T601_blue : "{18DB666895492297}Prefabs/Vehicles/Wheeled/T601/T601_blue.et" {
  components {
@@ -1622,7 +1622,7 @@ Vehicle T601_blue : "{18DB666895492297}Prefabs/Vehicles/Wheeled/T601/T601_blue.e
    m_sCatalogPrefab "{18DB666895492297}Prefabs/Vehicles/Wheeled/T601/T601_blue.et"
   }
  }
- coords 150 1 165
+ coords 240 1 17
 }
 Vehicle V2101_green : "{1B416443AC87C8C1}Prefabs/Vehicles/Wheeled/V2101/V2101_green.et" {
  components {
@@ -1630,7 +1630,7 @@ Vehicle V2101_green : "{1B416443AC87C8C1}Prefabs/Vehicles/Wheeled/V2101/V2101_gr
    m_sCatalogPrefab "{1B416443AC87C8C1}Prefabs/Vehicles/Wheeled/V2101/V2101_green.et"
   }
  }
- coords 181.5 1 175
+ coords 245 1 26
 }
 Vehicle V2101_darkRed : "{1B416443AC87C8C2}Prefabs/Vehicles/Wheeled/V2101/V2101_darkRed.et" {
  components {
@@ -1638,7 +1638,7 @@ Vehicle V2101_darkRed : "{1B416443AC87C8C2}Prefabs/Vehicles/Wheeled/V2101/V2101_
    m_sCatalogPrefab "{1B416443AC87C8C2}Prefabs/Vehicles/Wheeled/V2101/V2101_darkRed.et"
   }
  }
- coords 192 1 175
+ coords 245 1 33
 }
 Vehicle V2101_lightGreen : "{4477ED1B4762DFCB}Prefabs/Vehicles/Wheeled/V2101/V2101_lightGreen.et" {
  components {
@@ -1646,7 +1646,7 @@ Vehicle V2101_lightGreen : "{4477ED1B4762DFCB}Prefabs/Vehicles/Wheeled/V2101/V21
    m_sCatalogPrefab "{4477ED1B4762DFCB}Prefabs/Vehicles/Wheeled/V2101/V2101_lightGreen.et"
   }
  }
- coords 202.5 1 175
+ coords 245 1 40
 }
 Vehicle T601_blue_twoTone : "{4A5D95F81DBAC29F}Prefabs/Vehicles/Wheeled/T601/T601_blue_twoTone.et" {
  components {
@@ -1654,7 +1654,7 @@ Vehicle T601_blue_twoTone : "{4A5D95F81DBAC29F}Prefabs/Vehicles/Wheeled/T601/T60
    m_sCatalogPrefab "{4A5D95F81DBAC29F}Prefabs/Vehicles/Wheeled/T601/T601_blue_twoTone.et"
   }
  }
- coords 162 1 165
+ coords 240 1 23
 }
 Vehicle T601_white : "{54483CA4A26F8632}Prefabs/Vehicles/Wheeled/T601/T601_white.et" {
  components {
@@ -1662,7 +1662,7 @@ Vehicle T601_white : "{54483CA4A26F8632}Prefabs/Vehicles/Wheeled/T601/T601_white
    m_sCatalogPrefab "{54483CA4A26F8632}Prefabs/Vehicles/Wheeled/T601/T601_white.et"
   }
  }
- coords 174 1 165
+ coords 240 1 53
 }
 Vehicle V2101_beige : "{5E696DD4888CE406}Prefabs/Vehicles/Wheeled/V2101/V2101_beige.et" {
  components {
@@ -1670,7 +1670,7 @@ Vehicle V2101_beige : "{5E696DD4888CE406}Prefabs/Vehicles/Wheeled/V2101/V2101_be
    m_sCatalogPrefab "{5E696DD4888CE406}Prefabs/Vehicles/Wheeled/V2101/V2101_beige.et"
   }
  }
- coords 213 1 175
+ coords 245 1 47
 }
 Vehicle T601_beige : "{6303FEB76E4B719A}Prefabs/Vehicles/Wheeled/T601/T601_beige.et" {
  components {
@@ -1678,7 +1678,7 @@ Vehicle T601_beige : "{6303FEB76E4B719A}Prefabs/Vehicles/Wheeled/T601/T601_beige
    m_sCatalogPrefab "{6303FEB76E4B719A}Prefabs/Vehicles/Wheeled/T601/T601_beige.et"
   }
  }
- coords 186 1 165
+ coords 240 1 5
 }
 Vehicle V2101_lightBlue : "{6F97E3363DB4BC2E}Prefabs/Vehicles/Wheeled/V2101/V2101_lightBlue.et" {
  components {
@@ -1686,7 +1686,7 @@ Vehicle V2101_lightBlue : "{6F97E3363DB4BC2E}Prefabs/Vehicles/Wheeled/V2101/V210
    m_sCatalogPrefab "{6F97E3363DB4BC2E}Prefabs/Vehicles/Wheeled/V2101/V2101_lightBlue.et"
   }
  }
- coords 223.5 1 175
+ coords 245 1 54
 }
 Vehicle T601_beige_twoTone : "{99EAA21F54EFE595}Prefabs/Vehicles/Wheeled/T601/T601_beige_twoTone.et" {
  components {
@@ -1694,7 +1694,7 @@ Vehicle T601_beige_twoTone : "{99EAA21F54EFE595}Prefabs/Vehicles/Wheeled/T601/T6
    m_sCatalogPrefab "{99EAA21F54EFE595}Prefabs/Vehicles/Wheeled/T601/T601_beige_twoTone.et"
   }
  }
- coords 198 1 165
+ coords 240 1 11
 }
 Vehicle T601_green : "{9A40C9D2689EE151}Prefabs/Vehicles/Wheeled/T601/T601_green.et" {
  components {
@@ -1702,7 +1702,7 @@ Vehicle T601_green : "{9A40C9D2689EE151}Prefabs/Vehicles/Wheeled/T601/T601_green
    m_sCatalogPrefab "{9A40C9D2689EE151}Prefabs/Vehicles/Wheeled/T601/T601_green.et"
   }
  }
- coords 210 1 165
+ coords 240 1 29
 }
 Vehicle V2101_white : "{AE99BC6F557A648F}Prefabs/Vehicles/Wheeled/V2101/V2101_white.et" {
  components {
@@ -1710,7 +1710,7 @@ Vehicle V2101_white : "{AE99BC6F557A648F}Prefabs/Vehicles/Wheeled/V2101/V2101_wh
    m_sCatalogPrefab "{AE99BC6F557A648F}Prefabs/Vehicles/Wheeled/V2101/V2101_white.et"
   }
  }
- coords 234 1 175
+ coords 245 1 61
 }
 Vehicle T601_orange : "{D6D6234A989BE564}Prefabs/Vehicles/Wheeled/T601/T601_orange.et" {
  components {
@@ -1718,7 +1718,7 @@ Vehicle T601_orange : "{D6D6234A989BE564}Prefabs/Vehicles/Wheeled/T601/T601_oran
    m_sCatalogPrefab "{D6D6234A989BE564}Prefabs/Vehicles/Wheeled/T601/T601_orange.et"
   }
  }
- coords 222 1 165
+ coords 240 1 41
 }
 Vehicle T601_orange_twoTone : "{F185576106FA87E7}Prefabs/Vehicles/Wheeled/T601/T601_orange_twoTone.et" {
  components {
@@ -1726,7 +1726,7 @@ Vehicle T601_orange_twoTone : "{F185576106FA87E7}Prefabs/Vehicles/Wheeled/T601/T
    m_sCatalogPrefab "{F185576106FA87E7}Prefabs/Vehicles/Wheeled/T601/T601_orange_twoTone.et"
   }
  }
- coords 234 1 165
+ coords 240 1 47
 }
 Vehicle T601_grey : "{F69FB3BEBCF96315}Prefabs/Vehicles/Wheeled/T601/T601_grey.et" {
  components {
@@ -1734,5 +1734,5 @@ Vehicle T601_grey : "{F69FB3BEBCF96315}Prefabs/Vehicles/Wheeled/T601/T601_grey.e
    m_sCatalogPrefab "{F69FB3BEBCF96315}Prefabs/Vehicles/Wheeled/T601/T601_grey.et"
   }
  }
- coords 246 1 165
+ coords 240 1 35
 }
