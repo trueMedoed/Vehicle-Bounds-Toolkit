@@ -1,0 +1,8 @@
+Vehicle V2101_yellow : "{02582024FDD52845}Prefabs/Vehicles/Wheeled/V2101/V2101_yellow.et" {
+ components {
+  ME_VBT_VehicleBoundsFixtureMarkerComponent "{6A6AE744897B4E6B}" {
+   m_sCatalogPrefab "{02582024FDD52845}Prefabs/Vehicles/Wheeled/V2101/V2101_yellow.et"
+  }
+ }
+ coords 250 1 5
+}

@@ -23,7 +23,22 @@
       "mcp__enfusion-mcp__game_browse",
       "Bash(powershell.exe -NoProfile -Command \"Get-Process ArmaReforgerWorkbenchSteamDiag -ErrorAction SilentlyContinue | Select-Object Id,Path,StartTime | Format-List\")",
       "Bash(powershell.exe -NoProfile -Command \"Get-Process ArmaReforgerWorkbenchSteamDiag -ErrorAction SilentlyContinue | Select-Object Id,Path,StartTime,MainWindowTitle | Format-List\")",
-      "mcp__enfusion-mcp__project_browse"
+      "mcp__enfusion-mcp__project_browse",
+      "mcp__enfusion-mcp__wb_entity_list",
+      "mcp__enfusion-mcp__wb_entity_inspect",
+      "mcp__enfusion-mcp__project_read",
+      "mcp__enfusion-mcp__wb_layers",
+      "mcp__enfusion-mcp__wb_entity_modify",
+      "mcp__enfusion-mcp__wb_entity_select",
+      "mcp__enfusion-mcp__wb_resources",
+      "mcp__enfusion-mcp__wb_prefabs",
+      "mcp__enfusion-mcp__wb_entity_create",
+      "mcp__enfusion-mcp__wb_component",
+      "mcp__enfusion-mcp__project_write",
+      "mcp__enfusion-mcp__wb_save",
+      "Bash(powershell -NoProfile -Command 'Get-CimInstance Win32_Process | Where-Object { $_.Name -like \"ArmaReforgerWorkbench*\" } | Select-Object ProcessId,Name,CommandLine | Format-List')",
+      "Bash(powershell -NoProfile -Command 'Start-Sleep -Seconds 15')",
+      "Bash(powershell -NoProfile -Command 'Start-Sleep -Seconds 20')"
     ]
   }
 }
