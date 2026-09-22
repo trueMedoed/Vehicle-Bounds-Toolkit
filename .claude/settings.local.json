@@ -38,7 +38,21 @@
       "mcp__enfusion-mcp__wb_save",
       "Bash(powershell -NoProfile -Command 'Get-CimInstance Win32_Process | Where-Object { $_.Name -like \"ArmaReforgerWorkbench*\" } | Select-Object ProcessId,Name,CommandLine | Format-List')",
       "Bash(powershell -NoProfile -Command 'Start-Sleep -Seconds 15')",
-      "Bash(powershell -NoProfile -Command 'Start-Sleep -Seconds 20')"
+      "Bash(powershell -NoProfile -Command 'Start-Sleep -Seconds 20')",
+      "mcp__enfusion-mcp__wb_projects",
+      "Bash(powershell.exe -NoProfile -Command 'Get-ChildItem \"C:\\\\Users\\\\Phil\\\\Documents\\\\My Games\\\\ArmaReforgerWorkbench\\\\logs\" -Directory | Sort-Object LastWriteTime -Descending | Select-Object -First 1 -ExpandProperty FullName')",
+      "mcp__enfusion-mcp__wb_play",
+      "mcp__enfusion-mcp__wb_script_editor",
+      "Bash(powershell.exe -NoProfile -Command 'Start-Sleep -Seconds 15')",
+      "Bash(powershell.exe -NoProfile -Command 'Get-Process -Name \"ArmaReforgerWorkbench*\" -ErrorAction SilentlyContinue | Select-Object Id,ProcessName,Path,StartTime,MainWindowTitle | Format-List')",
+      "Bash(powershell.exe -NoProfile -Command 'Stop-Process -Id 14720 -Force')",
+      "Bash(powershell.exe -NoProfile -Command \"Get-Process -Name 'ArmaReforgerWorkbench*' -ErrorAction SilentlyContinue | Select-Object ProcessName,Id,Path,StartTime | Format-Table -AutoSize\")",
+      "Bash(powershell.exe -NoProfile -Command \"Stop-Process -Id 26348 -Force\")",
+      "Bash(powershell.exe -NoProfile -Command \"Stop-Process -Id 21892 -Force\")",
+      "Bash(powershell.exe -NoProfile -Command '$exe = \"D:\\\\SteamLibrary\\\\steamapps\\\\common\\\\Arma Reforger Experimental Tools\\\\Workbench\\\\ArmaReforgerWorkbenchSteamDiag.exe\"; $gproj = \"C:\\\\Users\\\\Phil\\\\Documents\\\\GitHub\\\\ArmaReforger\\\\Mods\\\\Vehicle Bounds Toolkit\\\\ME_Vehicle_Bounds_Toolkit\\\\addon.gproj\"; Start-Process -FilePath $exe -ArgumentList @\\(\"-gproj\", \\(\"`\"{0}`\"\" -f $gproj\\)\\) -WorkingDirectory \"D:\\\\SteamLibrary\\\\steamapps\\\\common\\\\Arma Reforger Experimental\"')",
+      "Bash(powershell.exe -NoProfile -Command \"Get-Process -Name 'ArmaReforgerWorkbench*' -ErrorAction SilentlyContinue | Select-Object ProcessName,Id,Path,StartTime,MainWindowTitle | Format-List\")",
+      "Bash(powershell.exe -NoProfile -Command 'Start-Sleep -Seconds 20')",
+      "mcp__enfusion-mcp__mod_build"
     ]
   }
 }

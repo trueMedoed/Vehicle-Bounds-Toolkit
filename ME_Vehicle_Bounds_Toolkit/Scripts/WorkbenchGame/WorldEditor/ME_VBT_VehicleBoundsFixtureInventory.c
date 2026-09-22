@@ -31,7 +31,7 @@ class ME_VBT_VehicleBoundsFixtureInventoryResult
 class ME_VBT_VehicleBoundsFixtureInventory
 {
 	static const int SCHEMA_VERSION = 2;
-	static const int EXPECTED_MARKER_COUNT = 146;
+	static const int EXPECTED_MARKER_COUNT = 164;
 	static const string FIXTURE_IDENTITY = "ME_VBT_VehicleBoundsFixture_v1";
 	static const string GENERATOR_VERSION = "ME_VBT_per_prefab_generator_v2-faction-type-groups";
 
